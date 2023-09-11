@@ -1,1 +1,78 @@
-# FilmsSerials_Database
+# Films & Serials Database
+## 1. **About**
+* App name: Digital library of films and serials
+* Developer: Vadim Zhur
+* Group: 153501
+
+## 2. **Functional requirements**
+* User authorization
+* User management (CRUD)
+* Role system
+* History of user actions
+
+## 3. **List of tables**
+1. ### Films Table (One-to-Many with Genres and Ratings)
+    * FilmID (Primary Key, INT, Auto-increment)
+    * Title (VARCHAR, 255 characters)
+    * Release Year (INT, 4 digits)
+    * Duration (INT, in minutes)
+    * Plot Summary (TEXT)
+    * Genre (VARCHAR, 255 characters)
+    * Director (VARCHAR, 255 characters)
+    * Average User Rating (DECIMAL, 2 decimal places, between 1.0 and 10.0)
+2. ### Serials Table (One-to-Many with Genres and Ratings)
+    * ShowID (Primary Key, INT, Auto-increment)
+    * Title (VARCHAR, 255 characters)
+    * First Aired Year (INT, 4 digits)
+    * Last Aired Year (INT, 4 digits, allow NULL)
+    * Number of Seasons (INT)
+    * Plot Summary (TEXT)
+    * Genre (VARCHAR, 255 characters)
+    * Creators (VARCHAR, 255 characters)
+    * Average User Rating (DECIMAL, 2 decimal places, between 1.0 and 10.0)
+3. ### Genres Table (Many-to-Many with Films and Serials)
+    * GenreID (Primary Key, INT, Auto-increment)
+    * Genre Name (VARCHAR, 255 characters)
+4. ### Actors Table (Many-to-Many with Films and Serials)
+    * ActorID (Primary Key, INT, Auto-increment)
+    * First Name (VARCHAR, 50 characters)
+    * Last Name (VARCHAR, 50 characters)
+    * Date of Birth (DATE)
+    * Nationality (VARCHAR, 50 characters)
+5. ### Directors Table (Many-to-Many with Films and Serials)
+    * DirectorID (Primary Key, INT, Auto-increment)
+    * First Name (VARCHAR, 50 characters)
+    * Last Name  (VARCHAR, 50 characters)
+    * Date of Birth (DATE)
+    * Nationality (VARCHAR, 50 characters)
+6. ### Ratings Table (Many-to-One with Films or Serials)
+    * RatingID (Primary Key, INT, Auto-increment)
+    * Film or Serial (Foreign Key referencing Films or Serials)
+    * User Rating (DECIMAL(3, 1), between 1.0 and 10.0)
+    * Review Text (TEXT, optional)
+7. ### Awards Table (Many-to-Many with Films and Serials)
+    * AwardID (Primary Key, INT, Auto-increment)
+    * Film or Serial (Foreign Key referencing Films or Serials)
+    * Award Name (VARCHAR(255) or ENUM, e.g., 'Best Picture')
+    * Award Category (VARCHAR(255) or ENUM, e.g., 'Drama')
+    * Year Received  (INT, 4 digits)
+8. ### Languages Table (One-to-One with Films)
+    * LanguageID (Primary Key, INT, Auto-increment)
+    * Language Name (VARCHAR(50))
+    * Film (Foreign Key referencing Films, Unique Constraint)
+9. ### User Accounts Table (Many-to-Many relationship with Watch History)
+    * UserID  (Primary Key, INT, Auto-increment)
+    * Username (VARCHAR, 50 characters)
+    * Email (VARCHAR, 255 characters)
+    * Password (VARCHAR, hashed and salted, longer than 255 characters)
+    * Registration Date (DATE)
+10. ### User Roles Table (One-to-Many relationship with User Accounts)
+    * RoleID  (Primary Key, INT, Auto-increment)
+    * Role Name (VARCHAR(50))
+11. ### Watch History Table (Many-to-Many with User Accounts and Films/Serials)
+    * HistoryID (Primary Key, INT, Auto-increment)
+    * UserID (Foreign Key INT referencing User Accounts)
+    * Film or Serial (Foreign Key INT referencing Films or Serials)
+    * Date Watched (DATE)
+
+## 4. **Database scheme**
