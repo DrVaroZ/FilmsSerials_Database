@@ -25,7 +25,7 @@
     * Title (VARCHAR, 255 characters)
     * Release Year (INT, 4 digits)
     * Duration (INT, in minutes)
-    * Plot Summary (TEXT)
+    * Plot Summary (VARCHAR, 3000 characters)
     * Genre (Foreign Key)
     * Director (Foreign Key)
     * Actors (Foreign Key)
