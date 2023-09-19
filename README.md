@@ -7,8 +7,17 @@
 ## 2. **Functional requirements**
 * User authorization
 * User management (CRUD)
-* Role system
+* Role system: admins and users
 * History of user actions
+* After authorization user can:
+   * look for a film
+   * get some info about the film
+   * give a rating to the film
+   * watch history of actions
+* After authorization admins can:
+   * the same as users
+   * get info about users
+   * manage users (CRUD)
 
 ## 3. **List of tables**
 1. ### FilmsSerials Table (One-to-Many with Genres and Ratings)
